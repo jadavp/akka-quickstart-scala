@@ -15,5 +15,8 @@ object StreamDemo1 extends App {
   graph.run()
 
   val flow = Flow[Int].map(x => x + 1)
-  source.via(flow).to(sink).run()
+  //source.via(flow).to(sink).run()
+  source.map{x =>
+    println(s"printing : $x")
+    x+2}.run()
 }
